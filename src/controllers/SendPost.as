@@ -21,8 +21,7 @@ package controllers
 	
 	public class SendPost extends EventDispatcher
 	{
-		private var _WIN:String = "http://oxapps.pl/apps/bols_game/game/endGame";
-		private var _INFO:String = "http://oxapps.pl/apps/bols_game/game/info";
+		private var _WIN:String = "http://oxapps.pl/apps/bols/game/endGame";
 		
 		private var _loader:URLLoader =  new URLLoader();
 		private var _request:URLRequest;
@@ -30,6 +29,7 @@ package controllers
 		private var _timer:Timer =   new Timer(3000,1);
 		private var _unsuccefull_count:Number = 0;
 		private var _popup:Boolean =  false;
+		private var _wrongpopup:WentWrong;
 		
 		public function SendPost(target:IEventDispatcher=null)
 		{
@@ -61,10 +61,10 @@ package controllers
 		private function renewPost(...args):void{
 			_unsuccefull_count++;
 			if (_unsuccefull_count >10){
-//				if(_popup){
-//					_wrongpopup =  new WentWrong(Game.instance());
-//					_wrongpopup.show();
-//				}
+				if(_popup){
+					_wrongpopup =  new WentWrong(Game.instance());
+					_wrongpopup.show();
+				}
 				
 				trace("serwery nieczynne");
 			}
@@ -120,10 +120,6 @@ package controllers
 			return _WIN;
 		}
 		
-		public function get INFO():String
-		{
-			return _INFO;
-		}
 		
 		
 	}

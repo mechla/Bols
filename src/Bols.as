@@ -9,10 +9,10 @@ package
 	import flash.events.UncaughtErrorEvent;
 	import flash.system.Security;
 
-	[SWF(width='838',height='700',frameRate='25')]
+	[SWF(width='605',height='646',frameRate='25')]
 	public class Bols extends Sprite
 	{
-		private var _boutle:FrozingGame;
+		private var _boutle:Game;
 		
 		Security.allowDomain('*');
 		public function Bols() 
@@ -32,8 +32,8 @@ package
 			loaderInfo.uncaughtErrorEvents.addEventListener(UncaughtErrorEvent.UNCAUGHT_ERROR, uncaughtErrorHandler);
 			this.addEventListener(ErrorEvent.ERROR,errorHandler);
 			
-			addChild(FrozingGame.instance());
-			FrozingGame.instance().init();
+			addChild(Game.instance());
+			Game.instance().init();
 		}
 		private function uncaughtErrorHandler(event:UncaughtErrorEvent):void
 		{
